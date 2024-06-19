@@ -9,12 +9,12 @@ import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 @Configuration
 public class MongoDBConfig {
     @Bean
-    public MongoDatabaseFactory mongoConfigure(){
+    public MongoDatabaseFactory mongoConfigure() {
         return new SimpleMongoClientDatabaseFactory("mongodb://localhost:27017/product-catalog");
     }
 
     @Bean
-    public MongoTemplate mongoTemplate(){
+    public MongoTemplate mongoTemplate() {
         return new MongoTemplate(mongoConfigure());
     }
 }
