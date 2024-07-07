@@ -32,6 +32,13 @@ public class CategoryService {
         return category;
     }
 
+    public void delete(String id) {
+      Category category = this.categoryRepository.findById(id)
+              .orElseThrow(CategoryNotFoundExecption::new);
+
+        this.categoryRepository.delete(category);
+    }
+
     public List<Category> getAll() {
         return this.categoryRepository.findAll();
     }

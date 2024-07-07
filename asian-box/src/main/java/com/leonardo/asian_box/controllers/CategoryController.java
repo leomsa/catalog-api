@@ -18,14 +18,15 @@ public class CategoryController {
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
+
     @PostMapping
     public ResponseEntity<Category> create(@RequestBody CategoryDTO categoryData) {
-         Category newCategory = this.categoryService.create(categoryData);
-         return ResponseEntity.ok().body(newCategory);
+        Category newCategory = this.categoryService.create(categoryData);
+        return ResponseEntity.ok().body(newCategory);
     }
 
     @GetMapping
-    public  ResponseEntity<List<Category>> getAll() {
+    public ResponseEntity<List<Category>> getAll() {
         List<Category> categories = this.categoryService.getAll();
         return ResponseEntity.ok().body(categories);
     }
@@ -33,6 +34,12 @@ public class CategoryController {
     @PutMapping("/{id}")
     public ResponseEntity<Category> update(@PathParam("id") String id, @RequestBody CategoryDTO categoryData) {
         Category updatedCategory = this.categoryService.update(categoryData);
-        return ResponseEntity.ok().body(newCategory);
+        return ResponseEntity.ok().body(updatedCategory);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Category> delete(@PathParam("id") String id) {
+        this.categoryService.delete(categoryData);
+        return ResponseEntity.noContent().build();
     }
 }
