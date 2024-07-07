@@ -3,16 +3,16 @@ package com.leonardo.asian_box.services;
 import com.leonardo.asian_box.DTO.CategoryDTO;
 import com.leonardo.asian_box.entities.category.Category;
 import com.leonardo.asian_box.entities.category.exeptions.CategoryNotFoundExecption;
-import com.leonardo.asian_box.repositories.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
-    private CategoryRepository categoryRepository;
+    private com.leonardo.asian_box.repositories.CategoryService categoryRepository;
 
-    public CategoryService(CategoryRepository categoryRepository) {
+    public CategoryService(com.leonardo.asian_box.repositories.CategoryService categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
 
@@ -41,5 +41,9 @@ public class CategoryService {
 
     public List<Category> getAll() {
         return this.categoryRepository.findAll();
+    }
+
+    public Optional<Category> getById(String id) {
+        return this.categoryRepository.findById(id);
     }
 }
