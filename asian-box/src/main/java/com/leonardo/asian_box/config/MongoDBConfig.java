@@ -1,4 +1,4 @@
-package com.leonardo.asian_box.config.mongo;
+package com.leonardo.asian_box.config;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
