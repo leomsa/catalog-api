@@ -3,6 +3,7 @@ package com.leonardo.asian_box.controllers;
 import com.leonardo.asian_box.DTO.CategoryDTO;
 import com.leonardo.asian_box.entities.category.Category;
 import com.leonardo.asian_box.services.CategoryService;
+import jakarta.websocket.server.PathParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,5 +28,11 @@ public class CategoryController {
     public  ResponseEntity<List<Category>> getAll() {
         List<Category> categories = this.categoryService.getAll();
         return ResponseEntity.ok().body(categories);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Category> update(@PathParam("id") String id, @RequestBody CategoryDTO categoryData) {
+        Category updatedCategory = this.categoryService.update(categoryData);
+        return ResponseEntity.ok().body(newCategory);
     }
 }
