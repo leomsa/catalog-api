@@ -13,25 +13,13 @@ import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 
 @Configuration
 public class MongoDBConfig {
-
     @Bean
-    public MongoDatabaseFactory mongoDbFactory() {
-        String connectionString = "mongodb://root:6897@192.168.1.8:27017/product-catalog";
-
-        ServerApi serverApi = ServerApi.builder()
-                .version(ServerApiVersion.V1)
-                .build();
-
-        MongoClientSettings settings = MongoClientSettings.builder()
-                .applyConnectionString(new ConnectionString(connectionString))
-                .serverApi(serverApi)
-                .build();
-
-        return new SimpleMongoClientDatabaseFactory(MongoClients.create(settings), "product-catalog");
+    public  MongoDatabaseFactory mongoConfigure (){
+        return  new SimpleMongoClientDatabaseFactory("mongodb://root:6897@192.168.1.8:27017/product-catalog");
     }
 
     @Bean
-    public MongoTemplate mongoTemplate() {
-        return new MongoTemplate(mongoDbFactory());
+    public MongoTemplate mongoTemplate (){
+        return new MongoTemplate(mongoConfigure());
     }
 }
